@@ -13,7 +13,7 @@ exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
             var promisedDocument;
 
             if (project) {
-                var projectRequire = null;
+                var projectRequire = require;
                 promisedDocument = Promise.resolve(SandyDocument.create().init(url, projectRequire, project))
             } else {
                 promisedDocument = Promise.reject(new Error("Cannot load a document with no project"));
