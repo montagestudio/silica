@@ -60,6 +60,15 @@
                 "content": {"<-": "@owner.projects"}
             }
         },
+        "text1": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "serialization"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.documentController.currentDocument.project.template.html"}
+            }
+        },
         "workbench": {
             "prototype": "palette/ui/workbench.reel",
             "properties": {
@@ -102,6 +111,7 @@
             <h2>
                 Serialization
             </h2>
+            <div data-montage-id="serialization"></div>
         </section>
     </div>
 </body>
