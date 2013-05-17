@@ -6,7 +6,8 @@
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
     ProjectFactory = require("core/project").ProjectFactory,
-    DocumentController = require("core/document-controller").DocumentController;
+    DocumentController = require("core/document-controller").DocumentController,
+    Promise = require("montage/core/promise").Promise;
 
 /**
     Description TODO
@@ -23,9 +24,11 @@ exports.Main = Montage.create(Component, /** @lends module:"ui/main.reel".Main# 
             this.defineBinding("documentController.projects", {"<-": "projects"});
 
             //TODO use a service to find the list of projects
-            ProjectFactory.defaultProject("Untitled Project").then(function (project) {
-                self.projects = [project];
-            }).done();
+            Promise.all([ProjectFactory.mushroomProject("Good Luck"),
+                ProjectFactory.starProject("You're a Star!")])
+                .then(function (projects) {
+                    self.projects = projects;
+                }).done();
         }
     },
 
