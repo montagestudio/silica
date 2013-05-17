@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+        Configurator
+    </title>
+    <link rel="stylesheet" type="text/css" href="configurator.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "configurator"}
+            }
+        },
+        "label": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "label"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.inspectedObject.label"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="configurator" class="Configurator">
+        <h1 data-montage-id="label"></h1>
+    </div>
+</body>
+</html>

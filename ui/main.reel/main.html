@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+        Main
+    </title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+        "configurator": {
+            "prototype": "ui/configurator.reel",
+            "properties": {
+                "element": {"#": "configurator"}
+            },
+            "bindings": {
+                "inspectedObject": {"<-": "@owner.documentController.currentDocument.selectedObjects.0"}
+            }
+        },
+        "openButton": {
+            "prototype": "matte/ui/button.reel",
+            "properties": {
+                "element": {"#": "openButton"}
+            },
+            "bindings": {
+                "detail.get('project')": {"<-": "@projectList.objectAtCurrentIteration"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "projectList": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "projectList"},
+                "contentController": {"@": "projectsController"},
+                "isSelectionEnabled": true
+            }
+        },
+        "projectName": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "projectName"}
+            },
+            "bindings": {
+                "value": {"<-": "@projectList.objectAtCurrentIteration.name"}
+            }
+        },
+        "projectsController": {
+            "prototype": "montage/core/range-controller",
+            "bindings": {
+                "content": {"<-": "@owner.projects"}
+            }
+        },
+        "workbench": {
+            "prototype": "palette/ui/workbench.reel",
+            "properties": {
+                "element": {"#": "workbench"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="main" class="Main">
+        <nav>
+            <h2>
+                Projects
+            </h2>
+            <ul data-montage-id="projectList">
+                <li>
+                    <span data-montage-id="projectName"></span>
+                    <button data-montage-id="openButton">
+                        Open
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <section>
+            <h2>
+                Stage
+            </h2>
+            <div data-montage-id="workbench" class="workbench">
+                <div data-arg="overlay"></div>
+            </div>
+        </section>
+        <section>
+            <h2>
+                Inspector
+            </h2>
+            <div data-montage-id="configurator"></div>
+        </section>
+        <section>
+            <h2>
+                Serialization
+            </h2>
+        </section>
+    </div>
+</body>
+</html>
