@@ -13,6 +13,25 @@
                 "element": {"#": "configurator"}
             }
         },
+        "condition1": {
+            "prototype": "montage/ui/condition.reel",
+            "properties": {
+                "element": {"#": "inspectorCondition"}
+            },
+            "bindings": {
+                "condition": {"<->": "@owner.inspectedObject"}
+            }
+        },
+        "inspector1": {
+            "prototype": "palette/ui/inspector/inspector.reel",
+            "properties": {
+                "element": {"#": "inspector"}
+            },
+            "bindings": {
+                "editingDocument": {"<->": "@owner.editingDocument"},
+                "object": {"<->": "@owner.inspectedObject"}
+            }
+        },
         "label": {
             "prototype": "montage/ui/text.reel",
             "properties": {
@@ -28,6 +47,9 @@
 <body>
     <div data-montage-id="configurator" class="Configurator">
         <h1 data-montage-id="label"></h1>
+        <div id="" data-montage-id="inspectorCondition">
+            <div id="" data-montage-id="inspector"></div>
+        </div>
     </div>
 </body>
 </html>
