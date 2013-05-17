@@ -20,6 +20,8 @@ exports.SandyReviver = Montage.create(ProxyReviver, {
 
             if ("owner" === label) {
                 exportId = context.ownerExportId;
+            } else {
+                exportId = value.prototype;
             }
 
             return proxyObject.init(label, revivedSerialization, exportId, context.editingDocument);
