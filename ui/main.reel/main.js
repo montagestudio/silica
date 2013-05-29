@@ -16,8 +16,8 @@ var Montage = require("montage").Montage,
 */
 exports.Main = Montage.create(Component, /** @lends module:"ui/main.reel".Main# */ {
 
-    didCreate: {
-        value: function () {
+    constructor: {
+        value: function Main () {
             var self = this;
 
             this.documentController = DocumentController.create();
