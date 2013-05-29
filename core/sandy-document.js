@@ -3,6 +3,7 @@ var Montage = require("montage").Montage,
     Promise = require("montage/core/promise").Promise,
     SandyReviver = require("core/sandy-reviver").SandyReviver,
     SandyContext = require("core/sandy-context").SandyContext,
+    SORTERS = require("palette/core/sorters"),
     SandyDocument;
 
 exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
@@ -34,6 +35,23 @@ exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
             self._addProxies(context.getObjects());
 
             return self;
+        }
+    },
+
+    _buildSerializationObjects: {
+        value: function () {
+            var template = this.project.template,
+                templateObjects = {};
+
+            Object.keys(this._editingProxyMap).sort(SORTERS.labelComparator).forEach(function (label) {
+                templateObjects[label] = this.serializationForProxy(this._editingProxyMap[label]);
+            }, this);
+
+            template.dispatchBeforeOwnPropertyChange("html", template.html);
+            template.objectsString = JSON.stringify(templateObjects, null, 4);
+            template.dispatchOwnPropertyChange("html", template.html);
+
+            return templateObjects;
         }
     },
 
