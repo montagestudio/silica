@@ -3,11 +3,7 @@
         "prototype": "montage/core/meta/property-blueprint",
         "properties": {
             "name": "rotation",
-            "blueprint": {"@": "root"}
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
+            "blueprint": {"@": "root"},
             "valueType":"number"
         }
     },
