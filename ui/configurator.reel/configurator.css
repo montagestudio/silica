@@ -1,0 +1,24 @@
+.Configurator-title {
+    margin: 0;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.Configurator .Inspector-header {
+    background: hsla(0,0%,100%,0.4);
+}
+
+.Configurator .PropertyGroup-toggle {
+    background: hsla(0,0%,100%,0.5);
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.Configurator .PropertyEditor {
+    background: hsla(0,0%,100%,0.2);
+}
+
+.Configurator .Property-label {
+    color: hsl(211, 19%, 44%);
+}
