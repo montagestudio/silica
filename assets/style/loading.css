@@ -1,0 +1,24 @@
+.loadingWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+
+.loading {
+    display: none;
+}
+
+.montage-app-bootstrapping .loading,
+.montage-app-loading .loading {
+    display: block;
+}
+
+.montage-app-bootstrapping .Main,
+.montage-app-loading .Main {
+    display: none;
+}

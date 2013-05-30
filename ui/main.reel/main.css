@@ -1,7 +1,50 @@
-.Main .workbench
-{
-    width: 640px;
-    height: 480px;
+.Main {
+    display: -webkit-flex;
+    height: 100%;
+}
+
+.Nav {
+    width: 300px;
+    background: hsl(211, 100%, 86%);
+}
+
+.ProjectList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ProjectList-item {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid hsla(0,0%,0%,.2);
+    background: hsla(0,0%,100%,.2);
+}
+
+.Stage {
+    -webkit-flex: 1;
+    min-width: 0;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+.Workbench {
+    -webkit-flex: 1;
+    color: hsl(59, 47%, 88%);
+}
+
+.Serialization {
+    height: 200px;
+    overflow: auto;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.2;
+    font-family: "Courier New", Courier, mono;
     border: 1px solid hsl(44,40%,91%);
     background-color: hsl(42,83%,95%);
+}
+
+.Inspector {
+    width: 300px;
+    background: hsl(211, 100%, 86%);
 }

@@ -80,12 +80,10 @@
 </head>
 <body>
     <div data-montage-id="main" class="Main">
-        <nav>
-            <h2>
-                Projects
-            </h2>
-            <ul data-montage-id="projectList">
-                <li>
+        
+        <nav class="Nav">
+            <ul data-montage-id="projectList" class="ProjectList">
+                <li class="ProjectList-item">
                     <span data-montage-id="projectName"></span>
                     <button data-montage-id="openButton">
                         Open
@@ -93,26 +91,19 @@
                 </li>
             </ul>
         </nav>
-        <section>
-            <h2>
-                Stage
-            </h2>
-            <div data-montage-id="workbench" class="workbench">
+        
+        <section class="Stage">
+            
+            <div data-montage-id="workbench" class="Workbench">
                 <div data-arg="overlay"></div>
             </div>
+            
+            <footer data-montage-id="serialization" class="Serialization"></footer>
+            
         </section>
-        <section>
-            <h2>
-                Inspector
-            </h2>
-            <div data-montage-id="configurator"></div>
-        </section>
-        <section>
-            <h2>
-                Serialization
-            </h2>
-            <div data-montage-id="serialization"></div>
-        </section>
+        
+        <section data-montage-id="configurator" class="Inspector"></section>
+        
     </div>
 </body>
 </html>
