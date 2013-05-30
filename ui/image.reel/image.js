@@ -28,7 +28,8 @@ exports.Image = Montage.create(AbstractImage, {
     draw: {
         value: function () {
             this.super();
-            this.element.style.webkitTransform = "rotate(" + this.rotation + "deg)"
+            var r = this.rotation ? this.rotation : 0;
+            this.element.style.webkitTransform = "rotate(" + r + "deg)";
         }
     }
 
