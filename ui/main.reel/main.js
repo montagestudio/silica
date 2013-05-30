@@ -69,7 +69,9 @@ exports.Main = Montage.create(Component, /** @lends module:"ui/main.reel".Main# 
 
             //TODO clear out the template we were showing even if we now show no template
             if (template) {
-                workbench.loadTemplate(template).done();
+                workbench.loadTemplate(template).then(function (liveStageInfo) {
+                    doc.associateWithLiveRepresentations(liveStageInfo.documentPart, liveStageInfo.template, liveStageInfo.frame);
+                }).done();
             }
         }
     },

@@ -4,6 +4,7 @@ var Montage = require("montage").Montage,
     SandyReviver = require("core/sandy-reviver").SandyReviver,
     SandyContext = require("core/sandy-context").SandyContext,
     SORTERS = require("palette/core/sorters"),
+    EditingController = require("palette/core/controller/editing-controller").EditingController,
     SandyDocument;
 
 exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
@@ -52,6 +53,27 @@ exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
             template.dispatchOwnPropertyChange("html", template.html);
 
             return templateObjects;
+        }
+    },
+
+    _templateController: {
+        value: null
+    },
+
+    associateWithLiveRepresentations: {
+        value: function (documentPart, template, frame) {
+            var templateController = this._templateController = EditingController.create();
+            templateController.frame = frame;
+            templateController.template = template;
+            templateController.owner = documentPart.objects.owner;
+
+            var self = this;
+            var labels = Object.keys(documentPart.objects);
+
+            labels.forEach(function (label) {
+                proxy = self.editingProxyMap[label];
+                proxy.stageObject = documentPart.objects[label];
+            });
         }
     },
 
