@@ -1,13 +1,13 @@
 var Montage = require("montage").Montage,
     EditingDocument = require("palette/core/editing-document").EditingDocument,
     Promise = require("montage/core/promise").Promise,
-    SandyReviver = require("core/sandy-reviver").SandyReviver,
-    SandyContext = require("core/sandy-context").SandyContext,
+    SilicaReviver = require("core/silica-reviver").SilicaReviver,
+    SilicaContext = require("core/silica-context").SilicaContext,
     SORTERS = require("palette/core/sorters"),
     EditingController = require("palette/core/controller/editing-controller").EditingController,
-    SandyDocument;
+    SilicaDocument;
 
-exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
+exports.SilicaDocument = SilicaDocument = Montage.create(EditingDocument, {
 
     load: {
         value: function (url, packageUrl, project) {
@@ -16,7 +16,7 @@ exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
 
             if (project) {
                 var projectRequire = require;
-                promisedDocument = Promise.resolve(SandyDocument.create().init(url, projectRequire, project))
+                promisedDocument = Promise.resolve(SilicaDocument.create().init(url, projectRequire, project))
             } else {
                 promisedDocument = Promise.reject(new Error("Cannot load a document with no project"));
             }
@@ -89,13 +89,13 @@ exports.SandyDocument = SandyDocument = Montage.create(EditingDocument, {
 
     newReviver: {
         get: function() {
-            return SandyReviver.create();
+            return SilicaReviver.create();
         }
     },
 
     newContext: {
         get: function() {
-            return SandyContext.create();
+            return SilicaContext.create();
         }
     }
 

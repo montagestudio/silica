@@ -1,6 +1,6 @@
 var Montage = require("montage/core/core").Montage,
     DocumentController = require("palette/core/document-controller").DocumentController,
-    SandyDocument = require("core/sandy-document").SandyDocument;
+    SilicaDocument = require("core/silica-document").SilicaDocument;
 
 exports.DocumentController = Montage.create(DocumentController, {
 
@@ -14,7 +14,7 @@ exports.DocumentController = Montage.create(DocumentController, {
 
     documentTypeForUrl: {
         value: function (url) {
-            return SandyDocument;
+            return SilicaDocument;
         }
     },
 

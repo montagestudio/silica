@@ -1,8 +1,8 @@
 var Montage = require("montage").Montage,
     ProxyReviver = require("palette/core/serialization/proxy-reviver").ProxyReviver,
-    SandyProxy = require("core/sandy-proxy").SandyProxy;
+    SilicaProxy = require("core/silica-proxy").SilicaProxy;
 
-exports.SandyReviver = Montage.create(ProxyReviver, {
+exports.SilicaReviver = Montage.create(ProxyReviver, {
 
     reviveMontageObject: {
         value: function(value, context, label) {
@@ -12,7 +12,7 @@ exports.SandyReviver = Montage.create(ProxyReviver, {
             }
 
             var exportId,
-                proxyObject = SandyProxy.create(),
+                proxyObject = SilicaProxy.create(),
                 revivedSerialization;
 
             context.setObjectLabel(proxyObject, label);

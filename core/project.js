@@ -73,7 +73,7 @@ exports.ProjectFactory = Montage.create(Montage, {
 
             return this.templateWithContent(defaultSerialization, defaultBodyMarkup)
                 .then(function (template) {
-                    return Project.create().init("sandy-proj://" + UUID.generate(), name, template);
+                    return Project.create().init("silica-proj://" + UUID.generate(), name, template);
                 });
         }
     },
@@ -102,7 +102,7 @@ exports.ProjectFactory = Montage.create(Montage, {
 
             return this.templateWithContent(defaultSerialization, defaultBodyMarkup)
                 .then(function (template) {
-                    return Project.create().init("sandy-proj://" + UUID.generate(), name, template);
+                    return Project.create().init("silica-proj://" + UUID.generate(), name, template);
                 });
         }
     }

@@ -1,10 +1,10 @@
 var Montage = require("montage").Montage,
     EditingProxy = require("palette/core/editing-proxy").EditingProxy;
 
-exports.SandyProxy = EditingProxy.specialize( {
+exports.SilicaProxy = EditingProxy.specialize( {
 
     constructor: {
-        value: function SandyProxy() {
+        value: function SilicaProxy() {
             this.super();
         }
     },
