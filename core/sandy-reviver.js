@@ -1,6 +1,6 @@
 var Montage = require("montage").Montage,
     ProxyReviver = require("palette/core/serialization/proxy-reviver").ProxyReviver,
-    EditingProxy = require("palette/core/editing-proxy").EditingProxy;
+    SandyProxy = require("core/sandy-proxy").SandyProxy;
 
 exports.SandyReviver = Montage.create(ProxyReviver, {
 
@@ -12,7 +12,7 @@ exports.SandyReviver = Montage.create(ProxyReviver, {
             }
 
             var exportId,
-                proxyObject = EditingProxy.create(),
+                proxyObject = SandyProxy.create(),
                 revivedSerialization;
 
             context.setObjectLabel(proxyObject, label);
