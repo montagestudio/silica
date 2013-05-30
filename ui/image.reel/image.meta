@@ -1,0 +1,31 @@
+{
+    "rotation_property": {
+        "prototype": "montage/core/meta/property-blueprint",
+        "properties": {
+            "name": "rotation",
+            "blueprint": {"@": "root"}
+            "cardinality":1,
+            "mandatory":false,
+            "denyDelete":false,
+            "readOnly":false,
+            "valueType":"number"
+        }
+    },
+
+    "root": {
+        "prototype": "montage/core/meta/blueprint",
+        "properties": {
+            "name": "Image",
+            "blueprintModuleId": "ui/image.meta",
+            "prototypeName": "Image",
+            "propertyBlueprints": [
+                {"@": "rotation_property"}
+            ],
+            "propertyBlueprintGroups":{
+                "layout":[
+                    {"@":"rotation_property"}
+                ]
+            }
+        }
+    }
+}

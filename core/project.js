@@ -53,7 +53,7 @@ exports.ProjectFactory = Montage.create(Montage, {
         value: function (name) {
             var defaultSerialization = {
                 "star": {
-                    "prototype": "matte/ui/image.reel",
+                    "prototype": "ui/image.reel",
                         "properties": {
                         "element": {"#": "image"},
                         "width": 100,
@@ -82,7 +82,7 @@ exports.ProjectFactory = Montage.create(Montage, {
         value: function (name) {
             var defaultSerialization = {
                 "mushroom": {
-                    "prototype": "matte/ui/image.reel",
+                    "prototype": "ui/image.reel",
                     "properties": {
                         "element": {"#": "image"},
                         "width": 100,
