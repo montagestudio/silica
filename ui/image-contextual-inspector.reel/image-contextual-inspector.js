@@ -13,8 +13,29 @@ var Montage = require("montage").Montage,
 */
 exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"ui/image-contextual-inspector.reel".ImageContextualInspector# */ {
 
+    constructor: {
+        value: function ImageContextualInspector () {
+            this.super();
+
+            this.addPathChangeListener("inspectedObject", this, "reset");
+        }
+    },
+
     inspectedObject: {
         value: null
+    },
+
+    reset: {
+        value: function () {
+            this.width =
+            this.height =
+            this.originX =
+            this.originY =
+            this.x =
+            this.y = null;
+
+            this.needsDraw = true;
+        }
     },
 
     handleTranslateStart: {
@@ -30,28 +51,36 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
         }
     },
 
+    offsetLeft: {
+        value: 0
+    },
+
+    offsetTop: {
+        value: 0
+    },
+
     width: {
-        value: 256
+        value: null
     },
 
     height: {
-        value: 256
+        value: null
     },
 
     originX: {
-        value: 128
+        value: null
     },
 
     originY: {
-        value: 128
+        value: null
     },
 
     x: {
-        value: 128
+        value: null
     },
 
     y: {
-        value: 0
+        value: null
     },
 
     handleTranslate: {
@@ -79,13 +108,55 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
         }
     },
 
+    willDraw: {
+        value: function () {
+
+            if (!this.inspectedObject) {
+                return;
+            }
+
+            var stageObject = this.inspectedObject.stageObject,
+                element;
+            if (stageObject) {
+                element = stageObject.element;
+                this.offsetTop = element.offsetTop;
+                this.offsetLeft = element.offsetLeft;
+                this.width = element.offsetWidth;
+                this.height = element.offsetHeight;
+
+                if (null === this.originX) {
+                    this.originX = this.width/2;
+                }
+
+                if (null === this.originY) {
+                    this.originY = this.height/2;
+                }
+
+                if (null === this.x) {
+                    //TODO determine coordinates of rotation handle given current rotation
+                    console.log("should indicate rotation", this.inspectedObject.properties.get('rotation'));
+                    this.x = this.originX;
+                }
+
+                if (null === this.y) {
+                    this.y = 0;
+                }
+
+            }
+        }
+    },
+
     draw: {
         value: function () {
-            this.element.style.width = this.width + "px";
-            this.element.style.height = this.height + "px";
-            this.templateObjects.originHandle.element.style.webkitTransform = "translate3d(" + this.originX + "px," + this.originY + "px, 0)";
+            var style = this.element.style;
+            style.width = (this.width ? this.width : 0) + "px";
+            style.height = (this.height ? this.height : 0) + "px";
+            style.webkitTransform = "translate3d(" + this.offsetLeft + "px," + this.offsetTop + "px, 0)";
 
-            this.templateObjects.rotationHandle.element.style.webkitTransform = "translate3d(" + this.x + "px," + this.y + "px, 0)";
+            var templateObjects = this.templateObjects;
+            templateObjects.originHandle.element.style.webkitTransform = "translate3d(" + this.originX + "px," + this.originY + "px, 0)";
+
+            templateObjects.rotationHandle.element.style.webkitTransform = "translate3d(" + this.x + "px," + this.y + "px, 0)";
         }
     }
 

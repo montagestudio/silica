@@ -1,7 +1,7 @@
 .ImageContextualInspector {
     color: black;
     position: absolute;
-    border: 1px solid red;
+    border: 1px solid hsl(216,100%,70%);
 }
 
 .ImageContextualInspector-handle {

@@ -11,6 +11,17 @@
             }
         },
 
+        "rotationCondition": {
+            "prototype": "montage/ui/condition.reel",
+            "properties": {
+                "element": {"#": "rotationCondition"},
+                "removalStrategy": "hide"
+            },
+            "bindings": {
+                "condition": {"<-": "@owner.inspectedObject.moduleId == 'ui/image.reel'"}
+            }
+        },
+
         "originHandle": {
             "prototype": "montage/ui/component",
             "properties": {
@@ -53,8 +64,10 @@
 </head>
 <body>
     <div data-montage-id="image-contextual-inspector" class="ImageContextualInspector">
-        <div data-montage-id="originHandle" class="ImageContextualInspector-handle">◎</div>
-        <div data-montage-id="rotationHandle" class="ImageContextualInspector-handle">◉</div>
+        <div data-montage-id="rotationCondition">
+            <div data-montage-id="originHandle" class="ImageContextualInspector-handle">◎</div>
+            <div data-montage-id="rotationHandle" class="ImageContextualInspector-handle">◉</div>
+        </div>
     </div>
 </body>
 </html>
