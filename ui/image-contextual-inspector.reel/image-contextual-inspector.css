@@ -6,4 +6,5 @@
 
 .ImageContextualInspector-handle {
     position: absolute;
+    cursor: crosshair;
 }
