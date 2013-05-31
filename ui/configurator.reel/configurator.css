@@ -1,11 +1,13 @@
 .Configurator-title {
     margin: 0;
     font-size: 18px;
-    padding: 20px;
+    padding: 14px;
+    color: hsla(0, 0%, 0%, 0.6);
 }
 
 .Configurator .Inspector-header {
-    background: hsla(0,0%,100%,0.4);
+    background: hsla(0, 0%, 0%, 0.1);
+    border-color: hsla(0, 0%, 0%, 0.1);
 }
 
 .Configurator .PropertyGroup-toggle {
@@ -13,6 +15,7 @@
     padding: 10px;
     outline: none;
     cursor: pointer;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
 }
 
 .Configurator .PropertyEditor {

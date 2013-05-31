@@ -28,7 +28,8 @@
                 "element": {"#": "openButton"}
             },
             "bindings": {
-                "detail.get('project')": {"<-": "@projectList.objectAtCurrentIteration"}
+                "detail.get('project')": {"<-": "@projectList.objectAtCurrentIteration"},
+                "label": {"<-": "@projectList.objectAtCurrentIteration.name"}
             },
             "listeners": [
                 {
@@ -43,15 +44,6 @@
                 "element": {"#": "projectList"},
                 "contentController": {"@": "projectsController"},
                 "isSelectionEnabled": false
-            }
-        },
-        "projectName": {
-            "prototype": "montage/ui/text.reel",
-            "properties": {
-                "element": {"#": "projectName"}
-            },
-            "bindings": {
-                "value": {"<-": "@projectList.objectAtCurrentIteration.name"}
             }
         },
         "projectsController": {
@@ -93,7 +85,6 @@
         <nav class="Nav">
             <ul data-montage-id="projectList" class="ProjectList">
                 <li class="ProjectList-item">
-                    <span data-montage-id="projectName" class="ProjectName"></span>
                     <button data-montage-id="openButton" class="ProjectOpenButton">Open</button>
                 </li>
             </ul>
@@ -107,7 +98,9 @@
                 </div>
             </div>
             
-            <footer data-montage-id="serialization" class="Serialization"></footer>
+            <footer class="Footer">
+                <pre data-montage-id="serialization" class="Serialization"></pre>
+            </footer>
             
         </section>
         
