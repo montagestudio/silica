@@ -41,12 +41,46 @@
             "bindings": {
                 "value": {"<-": "@owner.inspectedObject.label"}
             }
+        },
+        "undoButton": {
+            "prototype": "matte/ui/button.reel",
+            "properties": {
+                "element": {"#": "undoButton"}
+            },
+            "bindings": {
+                "label": {"<-": "'Undo ' + (@owner.editingDocument.undoManager.undoLabel || '')"},
+                "enabled": {"<-": "@owner.editingDocument.undoManager.canUndo"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "redoButton": {
+            "prototype": "matte/ui/button.reel",
+            "properties": {
+                "element": {"#": "redoButton"}
+            },
+            "bindings": {
+                "label": {"<-": "'Redo ' + (@owner.editingDocument.undoManager.redoLabel || '')"},
+                "enabled": {"<-": "@owner.editingDocument.undoManager.canRedo"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
         }
     }
     </script>
 </head>
 <body>
     <div data-montage-id="configurator" class="Configurator">
+        <button data-montage-id="undoButton"></button>
+        <button data-montage-id="redoButton"></button>
         <div data-montage-id="inspectorCondition">
             <h1 data-montage-id="label" class="Configurator-title"></h1>
             <div data-montage-id="inspector"></div>

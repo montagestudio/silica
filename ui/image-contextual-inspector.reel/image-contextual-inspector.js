@@ -4,7 +4,8 @@
     @requires montage/ui/component
 */
 var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+    Component = require("montage/ui/component").Component,
+    Promise = require("montage/core/promise").Promise;
 
 /**
     Description TODO
@@ -23,6 +24,10 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
     },
 
     inspectedObject: {
+        value: null
+    },
+
+    editingDocument: {
         value: null
     },
 
@@ -45,16 +50,37 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
         }
     },
 
+    _deferredRotationCompletion: {
+        value: null
+    },
+
+    _startingRotation: {
+        value: null
+    },
+
     handleTranslateStart: {
         value: function () {
+
+            if (this._deferredRotationCompletion) {
+                return;
+            }
+
             this.templateObjects.rotationComposer.translateX = this.x;
             this.templateObjects.rotationComposer.translateY = this.y;
+
+            this._startingRotation = this.getPath("inspectedObject.properties.get('rotation')");
+            this._deferredRotationCompletion = Promise.defer();
+            this.editingDocument.undoManager.register("Set Rotation", this._deferredRotationCompletion.promise);
+            this.editingDocument.undoManager.registrationEnabled = false;
         }
     },
 
     handleTranslateEnd: {
         value: function () {
-
+            this.editingDocument.undoManager.registrationEnabled = true;
+            var editingDocument = this.inspectedObject.editingDocument;
+            this._deferredRotationCompletion.resolve([editingDocument.setOwnedObjectProperty, editingDocument, this.inspectedObject, "rotation", this._startingRotation]);
+            this._deferredRotationCompletion = null;
         }
     },
 

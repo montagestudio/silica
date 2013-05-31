@@ -19,7 +19,8 @@
                 "element": {"#": "configurator"}
             },
             "bindings": {
-                "inspectedObject": {"<-": "@owner.documentController.currentDocument.selectedObjects.0"}
+                "inspectedObject": {"<-": "@owner.documentController.currentDocument.selectedObjects.0"},
+                "editingDocument": {"<-": "@owner.documentController.currentDocument"}
             }
         },
         "openButton": {
@@ -73,7 +74,8 @@
                 "element": {"#": "imageInspector"}
             },
             "bindings": {
-                "inspectedObject": {"<-": "@owner.documentController.currentDocument.selectedObjects.0"}
+                "inspectedObject": {"<-": "@owner.documentController.currentDocument.selectedObjects.0"},
+                "editingDocument": {"<-": "@owner.documentController.currentDocument"}
             }
         }
     }

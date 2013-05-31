@@ -17,6 +17,21 @@ exports.Configurator = Montage.create(Component, /** @lends module:"ui/configura
 
     inspectedObject: {
         value: null
-    }
+    },
 
+    editingDocument: {
+        value: null
+    },
+
+    handleUndoButtonAction: {
+        value: function () {
+            this.editingDocument.undoManager.undo().done();
+        }
+    },
+
+    handleRedoButtonAction: {
+        value: function () {
+            this.editingDocument.undoManager.redo().done();
+        }
+    }
 });
