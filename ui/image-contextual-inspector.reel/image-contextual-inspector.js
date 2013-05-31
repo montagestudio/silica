@@ -18,6 +18,7 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
             this.super();
 
             this.addPathChangeListener("inspectedObject", this, "reset");
+            this.addPathChangeListener("inspectedObject.properties.get('rotation')", this, "scheduleDraw");
         }
     },
 
@@ -34,6 +35,12 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
             this.x =
             this.y = null;
 
+            this.needsDraw = true;
+        }
+    },
+
+    scheduleDraw: {
+        value: function () {
             this.needsDraw = true;
         }
     },
@@ -124,6 +131,8 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
                 this.width = element.offsetWidth;
                 this.height = element.offsetHeight;
 
+                this.rotorLength = this.height/2 + 50;
+
                 if (null === this.originX) {
                     this.originX = this.width/2;
                 }
@@ -133,17 +142,19 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
                 }
 
                 if (null === this.x) {
-                    //TODO determine coordinates of rotation handle given current rotation
-                    console.log("should indicate rotation", this.inspectedObject.properties.get('rotation'));
                     this.x = this.originX;
                 }
 
                 if (null === this.y) {
-                    this.y = 0;
+                    this.y = this.originY - this.rotorLength;
                 }
 
             }
         }
+    },
+
+    rotorLength: {
+        value: null
     },
 
     draw: {
@@ -151,12 +162,14 @@ exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"
             var style = this.element.style;
             style.width = (this.width ? this.width : 0) + "px";
             style.height = (this.height ? this.height : 0) + "px";
-            style.webkitTransform = "translate3d(" + this.offsetLeft + "px," + this.offsetTop + "px, 0)";
+
+            var theta = this.getPath("inspectedObject.properties.get('rotation')");
+            theta = theta ? theta : 0;
+            style.webkitTransform = "translate3d(" + this.offsetLeft + "px," + this.offsetTop + "px, 0) rotate(" + theta + "deg)";
 
             var templateObjects = this.templateObjects;
             templateObjects.originHandle.element.style.webkitTransform = "translate3d(" + this.originX + "px," + this.originY + "px, 0)";
-
-            templateObjects.rotationHandle.element.style.webkitTransform = "translate3d(" + this.x + "px," + this.y + "px, 0)";
+            templateObjects.rotationHandle.element.style.webkitTransform = "translate3d(" + this.originX + "px," + (this.originY - this.rotorLength) + "px, 0)";
         }
     }
 
