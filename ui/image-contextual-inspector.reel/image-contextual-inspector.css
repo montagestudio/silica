@@ -1,0 +1,9 @@
+.ImageContextualInspector {
+    color: black;
+    position: absolute;
+    border: 1px solid red;
+}
+
+.ImageContextualInspector-handle {
+    position: absolute;
+}

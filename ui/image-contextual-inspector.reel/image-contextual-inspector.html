@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="image-contextual-inspector.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "image-contextual-inspector"}
+            }
+        },
+
+        "originHandle": {
+            "prototype": "montage/ui/component",
+            "properties": {
+                "element": {"#": "originHandle"},
+                "hasTemplate": false
+            }
+        },
+
+        "rotationHandle": {
+            "prototype": "montage/ui/component",
+            "properties": {
+                "element": {"#": "rotationHandle"},
+                "hasTemplate": false
+            }
+        },
+
+        "rotationComposer": {
+            "prototype": "montage/composer/translate-composer",
+            "properties": {
+                "component": {"@": "rotationHandle"},
+                "hasMomentum": false
+            },
+            "listeners": [
+                {
+                    "type": "translateStart",
+                    "listener": {"@": "owner"}
+                },
+                {
+                    "type": "translateEnd",
+                    "listener": {"@": "owner"}
+                },
+                {
+                    "type": "translate",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="image-contextual-inspector" class="ImageContextualInspector">
+        <div data-montage-id="originHandle" class="ImageContextualInspector-handle">◎</div>
+        <div data-montage-id="rotationHandle" class="ImageContextualInspector-handle">◉</div>
+    </div>
+</body>
+</html>

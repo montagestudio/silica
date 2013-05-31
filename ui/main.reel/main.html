@@ -74,6 +74,15 @@
             "properties": {
                 "element": {"#": "workbench"}
             }
+        },
+        "imageContextualInspector": {
+            "prototype": "ui/image-contextual-inspector.reel",
+            "properties": {
+                "element": {"#": "imageInspector"}
+            },
+            "bindings": {
+                "inspectedObject": {"<-": "@owner.documentController.currentDocument.selectedObjects.0"}
+            }
         }
     }
     </script>
@@ -93,7 +102,9 @@
         <section class="Stage">
             
             <div data-montage-id="workbench" class="Workbench">
-                <div data-arg="overlay"></div>
+                <div data-arg="overlay">
+                    <div data-montage-id="imageInspector"></div>
+                </div>
             </div>
             
             <footer data-montage-id="serialization" class="Serialization"></footer>
