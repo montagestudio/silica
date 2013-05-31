@@ -91,6 +91,16 @@ exports.Main = Montage.create(Component, /** @lends module:"ui/main.reel".Main# 
                 editingDocument.clearSelectedObjects();
             }
         }
+    },
+
+    handleUpdateButtonAction: {
+        value: function () {
+            var doc = this.documentController.currentDocument;
+
+            if (doc) {
+                doc._buildSerializationObjects();
+            }
+        }
     }
 
 });

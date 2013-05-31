@@ -53,6 +53,18 @@
                 "content": {"<-": "@owner.projects"}
             }
         },
+        "updateButton": {
+            "prototype": "matte/ui/button.reel",
+            "properties": {
+                "element": {"#": "updateButton"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
         "text1": {
             "prototype": "montage/ui/text.reel",
             "properties": {
@@ -101,6 +113,7 @@
             </div>
             
             <footer class="Footer">
+                <button data-montage-id="updateButton">Update</button>
                 <pre data-montage-id="serialization" class="Serialization"></pre>
             </footer>
             
