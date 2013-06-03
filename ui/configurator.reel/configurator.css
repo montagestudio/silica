@@ -22,6 +22,18 @@
     background: hsla(0,0%,100%,0.2);
 }
 
+.Configurator .Property {
+    display: -webkit-box;
+    display: -webkit-flex;
+}
+
+
 .Configurator .Property-label {
     color: hsl(211, 19%, 44%);
 }
+
+.Configurator .Property-field {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+}
+
