@@ -5,6 +5,7 @@
     <title>
         Main
     </title>
+    <link rel="stylesheet" type="text/css" href="silica-components.css">
     <link rel="stylesheet" type="text/css" href="main.css">
     <script type="text/montage-serialization">
     {
@@ -99,7 +100,7 @@
         <nav class="Nav">
             <ul data-montage-id="projectList" class="ProjectList">
                 <li class="ProjectList-item">
-                    <button data-montage-id="openButton" class="ProjectOpenButton">Open</button>
+                    <button data-montage-id="openButton" class="ProjectOpenButton Button">Open</button>
                 </li>
             </ul>
         </nav>
@@ -111,9 +112,10 @@
                     <div data-montage-id="imageInspector"></div>
                 </div>
             </div>
-            
+            <div class="Stage-bar Bar">
+                <button data-montage-id="updateButton" class="Bar-button Button">Update</button>
+            </div>
             <footer class="Footer">
-                <button data-montage-id="updateButton">Update</button>
                 <pre data-montage-id="serialization" class="Serialization"></pre>
             </footer>
             

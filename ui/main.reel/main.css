@@ -38,19 +38,6 @@
     height: auto;
     font-weight: bold;
     font-size: 18px;
-    border: none;
-    background: hsl(216, 100%, 70%);
-    color: white;
-}
-
-.ProjectOpenButton:hover {
-    color: white;
-    background: hsl(216, 100%, 74%);
-}
-
-.ProjectOpenButton.active {
-    background: hsl(216, 50%, 66%);
-    -webkit-transform: translateY(1px);
 }
 
 
@@ -83,7 +70,6 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: 20px;
-    border-top: 1px solid hsl(44,40%,70%);
 }
 
 .Serialization {
