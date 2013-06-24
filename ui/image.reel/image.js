@@ -1,7 +1,13 @@
 var Montage = require("montage").Montage,
     AbstractImage = require("montage/ui/base/abstract-image").AbstractImage;
 
-exports.Image = Montage.create(AbstractImage, {
+exports.Image = AbstractImage.specialize({
+
+    constructor: {
+        value: function Image() {
+            this.super();
+        }
+    },
 
     hasTemplate: {
         value: false

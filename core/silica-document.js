@@ -7,21 +7,12 @@ var Montage = require("montage").Montage,
     EditingController = require("palette/core/controller/editing-controller").EditingController,
     SilicaDocument;
 
-exports.SilicaDocument = SilicaDocument = Montage.create(EditingDocument, {
+exports.SilicaDocument = SilicaDocument = EditingDocument.specialize({
 
-    load: {
-        value: function (url, packageUrl, project) {
 
-            var promisedDocument;
-
-            if (project) {
-                var projectRequire = require;
-                promisedDocument = Promise.resolve(SilicaDocument.create().init(url, projectRequire, project))
-            } else {
-                promisedDocument = Promise.reject(new Error("Cannot load a document with no project"));
-            }
-
-            return promisedDocument;
+    constructor: {
+        value: function SilicaDocument() {
+            this.super();
         }
     },
 
@@ -87,15 +78,28 @@ exports.SilicaDocument = SilicaDocument = Montage.create(EditingDocument, {
         }
     },
 
-    newReviver: {
-        get: function() {
-            return SilicaReviver.create();
-        }
+    reviverConstructor: {
+        value: SilicaReviver
     },
 
-    newContext: {
-        get: function() {
-            return SilicaContext.create();
+    contextConstructor: {
+        value: SilicaContext
+    }
+}, {
+
+    load: {
+        value: function (url, packageUrl, project) {
+
+            var promisedDocument;
+
+            if (project) {
+                var projectRequire = require;
+                promisedDocument = Promise.resolve(SilicaDocument.create().init(url, projectRequire, project))
+            } else {
+                promisedDocument = Promise.reject(new Error("Cannot load a document with no project"));
+            }
+
+            return promisedDocument;
         }
     }
 

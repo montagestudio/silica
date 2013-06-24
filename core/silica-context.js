@@ -1,7 +1,13 @@
 var Montage = require("montage").Montage,
     ProxyContext = require("palette/core/serialization/proxy-context").ProxyContext;
 
-exports.SilicaContext = Montage.create(ProxyContext, {
+exports.SilicaContext = ProxyContext.specialize({
+
+    constructor: {
+        value: function SilicaContext() {
+            this.super();
+        }
+    },
 
     getElementById: {
         value: function(id) {

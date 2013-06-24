@@ -12,7 +12,7 @@
         "prototype": "montage/core/meta/blueprint",
         "properties": {
             "name": "Image",
-            "blueprintModuleId": "ui/image.meta",
+            "blueprintModuleId": "ui/image.reel/image.meta",
             "prototypeName": "Image",
             "propertyBlueprints": [
                 {"@": "rotation_property"}

@@ -12,7 +12,7 @@ var Montage = require("montage").Montage,
     @class module:"ui/image-contextual-inspector.reel".ImageContextualInspector
     @extends module:montage/ui/component.Component
 */
-exports.ImageContextualInspector = Montage.create(Component, /** @lends module:"ui/image-contextual-inspector.reel".ImageContextualInspector# */ {
+exports.ImageContextualInspector = Component.specialize(/** @lends module:"ui/image-contextual-inspector.reel".ImageContextualInspector# */ {
 
     constructor: {
         value: function ImageContextualInspector () {

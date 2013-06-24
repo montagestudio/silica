@@ -2,7 +2,13 @@ var Montage = require("montage/core/core").Montage,
     DocumentController = require("palette/core/document-controller").DocumentController,
     SilicaDocument = require("core/silica-document").SilicaDocument;
 
-exports.DocumentController = Montage.create(DocumentController, {
+exports.DocumentController = DocumentController.specialize({
+
+    constructor: {
+        value: function DocumentController() {
+            this.super();
+        }
+    },
 
     projects: {
         value: null

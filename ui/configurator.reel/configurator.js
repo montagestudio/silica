@@ -13,7 +13,13 @@ var Montage = require("montage").Montage,
  @class module:"ui/configurator.reel".Main
  @extends module:ui/component.Component
  */
-exports.Configurator = Montage.create(Component, /** @lends module:"ui/configurator.reel".Main# */ {
+exports.Configurator = Component.specialize(/** @lends module:"ui/configurator.reel".Main# */ {
+
+    constructor: {
+        value: function Configurator() {
+            this.super();
+        }
+    },
 
     inspectedObject: {
         value: null

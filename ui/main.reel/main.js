@@ -1,8 +1,8 @@
 /**
-    @module "ui/main.reel"
-    @requires montage
-    @requires montage/ui/component
-*/
+ @module "ui/main.reel"
+ @requires montage
+ @requires montage/ui/component
+ */
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
     ProjectFactory = require("core/project").ProjectFactory,
@@ -10,14 +10,14 @@ var Montage = require("montage").Montage,
     Promise = require("montage/core/promise").Promise;
 
 /**
-    Description TODO
-    @class module:"ui/main.reel".Main
-    @extends module:ui/component.Component
-*/
-exports.Main = Montage.create(Component, /** @lends module:"ui/main.reel".Main# */ {
+ Description TODO
+ @class module:"ui/main.reel".Main
+ @extends module:ui/component.Component
+ */
+exports.Main = Component.specialize(/** @lends module:"ui/main.reel".Main# */ {
 
     constructor: {
-        value: function Main () {
+        value: function Main() {
             var self = this;
 
             this.documentController = DocumentController.create();
@@ -25,7 +25,7 @@ exports.Main = Montage.create(Component, /** @lends module:"ui/main.reel".Main# 
 
             //TODO use a service to find the list of projects
             Promise.all([ProjectFactory.mushroomProject("Good Luck"),
-                ProjectFactory.starProject("You're a Star!")])
+                    ProjectFactory.starProject("You're a Star!")])
                 .then(function (projects) {
                     self.projects = projects;
                 }).done();
